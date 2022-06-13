@@ -28,28 +28,47 @@
 </head>
 <body>
     <?php
+        // Checks the currently active page
         $curr = basename($_SERVER['PHP_SELF']);
-    ?>    
+    ?>
+
+    <!-- NAVBAR for teachers -->
     <nav class="navbar navbar-expand-lg navbar-dark green-bg pl-5">
+
+        <!-- NAVBAR icon -->
         <i class="text-light mr-2 fa-solid fa-book"></i>
+
+        <!-- NAVBAR title -->
         <a class="navbar-brand header_title" href="#">Quiz App</a>
+
+
         <div style="border-left: 1px solid white">
             <a class="text-light ml-2">Teacher Portal</a>
         </div>
+
+        <!-- NAVBAR toggle button for smaller screen sizes -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse ml-5" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+                
+                <!-- Link to students page -->
+                <!-- Highlights the link if students page is currently active -->
                 <li class="nav-item">
                     <a class="nav-link <?php if ($curr=='teacher_home.php'){ echo 'active'; }?>" href="teacher_home.php">Students</a>
                 </li>
+
+                <!-- Link to Quizes page -->
+                <!-- Highlights the link if quizes page is currently active -->
                 <li class="nav-item">
                     <a class="nav-link <?php if ($curr=='teacher_quiz.php'){ echo 'active'; }?>" href="teacher_quiz.php">Quiz</a>
                 </li>
             </ul>
-            <a href="signout.php"><button class="btn btn-outline-light my-2 my-sm-0" type="button">Sign Out</button></a>
+
+            <!-- Signout Button -->
+            <a href="signout.php?flag=1"><button class="btn btn-outline-light my-2 my-sm-0" type="button">Sign Out</button></a>
         </div>
     </nav>
 </body>

@@ -8,8 +8,14 @@
 </head>
 <body>
     <?php
+
+        // Including teacher's header file
         include "teacher_header.php";
+
+        // Establishing connection with server
         include "connection.php";
+
+        // If session is not set redirects to login page
         if(!isset($_SESSION['id'])){
             echo "<script> window.location.assign('student_signin.php'); </script>";
         }
@@ -19,11 +25,14 @@
             <div class="col-9">
                 <h2 class="green-text">All Students<h2>
             </div>
+
+            <!-- Button to add more students -->
             <div class="col-3">
                 <button class="btn btn-block green-bg text-light" type="button" data-toggle="modal" data-target="#add_student"><i class="fa-solid fa-circle-plus mr-2"></i></i>ADD STUDENTS</button>
             </div>
         </div>
         <?php 
+            // Fetching all the students of current teacher
             $tid = $_SESSION['id'];
             $sql = "SELECT * FROM students WHERE teacher_id = '$tid'";
             $result = mysqli_query($connection,$sql);
@@ -39,6 +48,7 @@
                 </thead>
                 <tbody>
                     <?php
+                        // Loop to display all the students in table rows
                         while($res = mysqli_fetch_array($result)){
                             $s_id = $res['id'];
                             $name = $res['s_name'];
@@ -52,6 +62,8 @@
         </div>
     </div>
 
+
+    <!-- Modal form to add students -->
     <div class="modal" id="add_student" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content p-3">

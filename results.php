@@ -8,8 +8,14 @@
 </head>
 <body>
     <?php
+
+        // Including student's header file
         include "student_header.php";
+
+        // Establishing connection with database
         include "connection.php";
+
+        // If session is not set redirects to login page
         if(!isset($_SESSION['id'])){
             echo "<script> window.location.assign('student_signin.php'); </script>";
         }
@@ -17,13 +23,18 @@
     <div class="container mt-5">
         <div class="row mb-5">
             <div class="col-4">
+                <!-- GETS quiz name from URL and displays it -->
                 <h2 class="green-text">Results: <?php echo $_GET['quiz'] ?><h2>
             </div>
         </div>
         <?php
+
+            // GETS total marks and obtained marks from URL
             $obtained = $_GET['obtained'];
             $total = $_GET['total'];
         ?>
+
+        <!-- DIV to display the results -->
         <div class="form_card p-5 text-center">
             <div>
                 <p>You have scored<p>
@@ -32,6 +43,8 @@
                 <h1><b><?php echo $obtained ?>/<?php echo $total ?></b><h1>
             </div>
         </div>
+
+        <!-- Link to students home page -->
         <div class="green-text text-center">
             <a href="student_home.php"><i class="fa-solid fa-circle-chevron-left mr-2"></i><b>Go back to all quizes</b></a>
         <div>

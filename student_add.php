@@ -2,6 +2,7 @@
     session_start();
     include 'connection.php';
 
+    // Setting local timezone
     date_default_timezone_set("Asia/Karachi");
 
     $name = $_POST['name'];

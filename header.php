@@ -23,22 +23,39 @@
 </head>
 <body>
     <?php
+        //Checks the currently active page
         $curr = basename($_SERVER['PHP_SELF']);
     ?>
+
+    <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark green-bg pl-5">
+        
+        <!-- NAVBAR ICON -->
         <i class="text-light mr-2 fa-solid fa-book"></i>
+
+        <!-- NAVBAR Title -->
         <a class="navbar-brand header_title" href="#">Quiz App</a>
+
+        <!-- Div to show Student Portal or Teacher Portal on NAVBAR -->
         <div style="border-left: 1px solid white">
             <?php if ($curr=='student_signin.php') {
+
+                //if currently student portal is active it shows Student Portal
                 echo "<a class='text-light ml-2 mr-5'>Student Portal</a>";
             }
             else {
+
+                //Else it shows Teacher Portal
                 echo "<a class='text-light ml-2 mr-5'>Teacher Portal</a>";
             }?>
         </div>
+
+        <!-- NAVBAR Toggle button for smaller screen sizes -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+        <!-- PHP logic to show link to SIGNIN page from SIGNUP page and vice versa -->
         <?php 
         if ($curr!='student_signin.php'){
             if ($curr=='signup.php'){

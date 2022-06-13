@@ -27,17 +27,23 @@
 
 </head>
 <body>
+
+    <!-- NAVBAR for Students -->
     <nav class="navbar navbar-expand-lg navbar-dark green-bg pl-5">
         <i class="text-light mr-2 fa-solid fa-book"></i>
         <a class="navbar-brand header_title" href="#">Quiz App</a>
         <div style="border-left: 1px solid white">
             <a class="text-light ml-2">Student Portal</a>
         </div>
+
+        <!-- Toggle button for smaller screen sizes -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        
+        <!-- Signout button -->
         <div class="collapse navbar-collapse ml-5" id="navbarSupportedContent" style="float:right">
-            <a href="signout.php"><button class="btn btn-outline-light my-2 my-sm-0" type="button">Sign Out</button></a>
+            <a href="signout.php?flag=0"><button class="btn btn-outline-light my-2 my-sm-0" type="button">Sign Out</button></a>
         </div>
     </nav>
 </body>

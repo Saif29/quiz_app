@@ -9,6 +9,8 @@
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
+
+    <!-- JQuery code to add more questions div on button click -->
     <script>
         $("document").ready(function() {
             var count = 1;
@@ -23,14 +25,20 @@
 </head>
 <body>
     <?php
+        // Including header file
         include "teacher_header.php";
+
+        // Establishing connection with database
         include "connection.php";
+
+        // If session not started redirecting to login page
         if(!isset($_SESSION['id'])){
             echo "<script> window.location.assign('student_signin.php'); </script>";
         }
-        echo $_SESSION['email'];
     ?>
     <div class="container mt-5">
+
+        <!-- Form for quiz creation -->
         <form id="quiz_form" method="POST" action="quiz_create_process.php">
             <div class="row">
                 <div class="col-10">
@@ -92,6 +100,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Button to add more questions to quiz -->
             <button type="button" class="btn btn-block form_card add_btn green-text" id="add_btn">
                     <h3><i class="fa-solid fa-circle-plus mr-2"></i>ADD QUESTION</h3>
             </button>

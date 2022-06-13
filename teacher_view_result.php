@@ -8,19 +8,26 @@
 </head>
 <body>
     <?php
+
+        // Includes teacher's header file
         include "teacher_header.php";
+
+        // Establishing connection with database
         include "connection.php";
+
+        // If seesion not set redirects to login page
         if(!isset($_SESSION['id'])){
             echo "<script> window.location.assign('student_signin.php'); </script>";
         }
     ?>
     <?php
-        echo $_SESSION['email'];
+        // Fetching all results of specific quiz
         $quiz_id = $_GET['qID'];
         $tid = $_SESSION['id'];
         $sql = "SELECT * FROM results WHERE quiz_id = '$quiz_id'";
         $result = mysqli_query($connection,$sql);
 
+        // Fetching quiz name
         $sql2 = "SELECT q_name FROM quiz WHERE id = '$quiz_id'";
         $result2 = mysqli_query($connection,$sql2);
         $res2 = mysqli_fetch_assoc($result2);
@@ -42,13 +49,18 @@
                 </thead>
                 <tbody>
                     <?php
+
+                        // Loop to display all the results of quiz in table's rows
                         while($res = mysqli_fetch_array($result)){
                             $std_id = $res['student_id'];
+
+                            // Fetching student name
                             $sql3 = "SELECT s_name FROM students WHERE id = '$std_id'";
                             $result3 = mysqli_query($connection,$sql3);
                             $res3 = mysqli_fetch_assoc($result3);
                             $std_name = $res3['s_name'];
-                            
+
+                            // Fetching results of all students for specific quiz
                             $r_id = $res['id'];
                             $ob = $res['obtained'];
                             $total = $res['total'];

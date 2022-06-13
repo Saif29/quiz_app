@@ -1,4 +1,6 @@
 <?php
+
+    // Function to display time in form of 'x days ago' or 'today'
     function get_time_ago( $time )
     {
         $time_difference = time() - $time;
@@ -33,8 +35,14 @@
 </head>
 <body>
     <?php
+
+        // Include teacher's header file
         include "teacher_header.php";
+
+        // Establishing connection with database
         include "connection.php";
+
+        // if seesion not set redirects to login page
         if(!isset($_SESSION['id'])){
             echo "<script> window.location.assign('student_signin.php'); </script>";
         }
@@ -44,11 +52,15 @@
             <div class="col-9">
                 <h2 class="green-text">All Quizes<h2>
             </div>
+
+            <!-- Button to add more quizes -->
             <div class="col-3">
                 <a href="quiz_create.php"><button class="btn btn-block green-bg text-light"><i class="fa-solid fa-circle-plus mr-2"></i>CREATE QUIZ</button></a>
             </div>
         </div>
         <?php 
+
+            // Fetching all quizes of current teacher
             $tid = $_SESSION['id'];
             $sql = "SELECT * FROM quiz WHERE teacher_id = '$tid'";
             $result = mysqli_query($connection,$sql);
@@ -66,12 +78,16 @@
                 </thead>
                 <tbody>
                     <?php
+                        // Loop to display all the quizes in table's rows
                         while($res = mysqli_fetch_array($result)){
+
+                            // Fetching quiz details
                             $q_id = $res['id'];
                             $name = $res['q_name'];
                             $date = strtotime($res['last_modified']);
                             $date = get_time_ago($date);
 
+                            // Fetch results to check number of submissions
                             $sql1 = "SELECT * FROM results WHERE quiz_id = '$q_id'";
                             $result1 = mysqli_query($connection,$sql1);
                             $row1 = mysqli_num_rows($result1);

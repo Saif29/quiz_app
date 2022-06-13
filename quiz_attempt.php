@@ -8,15 +8,25 @@
 </head>
 <body>
     <?php
+        //Includes HEADER file
         include "student_header.php";
+
+        //Connects to the DataBase
         include "connection.php";
+
+        //If session is not started redirects to login page
         if(!isset($_SESSION['id'])){
             echo "<script> window.location.assign('student_signin.php'); </script>";
         }
+        //GETS quiz id from the URL
         $qID = $_GET['q_id'];
+
+        //Queries to get quiz name from database
         $q = mysqli_query($connection,"SELECT q_name FROM quiz WHERE (id = '$qID')");
         $q_res = mysqli_fetch_assoc($q);
         $q_name = $q_res['q_name'];
+
+        //Queries to get all questions of selected quiz from database
         $sql = "SELECT * FROM questions WHERE quiz_id = '$qID'";
         $result = mysqli_query($connection,$sql);
         $num = mysqli_num_rows($result);
@@ -25,23 +35,40 @@
         <form id="quiz_form" method="POST" action="quiz_submit.php?num=<?php echo $num ?>">
             <div class="row mb-4">
                 <div class="col-10">
+                    
+                    <!-- Quiz name heading -->
                     <h2 class="green-text"><?php echo $q_name ?><h2>
                 </div>
                 <div class="col-2">
+
+                    <!-- Submit button for quiz -->
                     <button id="save_btn" class="btn btn-block green-bg text-light" type="submit"><i class="fa-solid fa-circle-chevron-right mr-2"></i>SUBMIT</button>
                 </div>
             </div>
             <?php
-                $c = 0;
+                
+                // Loops through all the questions of the quiz and create blocks for each question
+                $c = 0;// Acts as counter to keep check of question number
                 while($res = mysqli_fetch_array($result)){
                 $c++;
             ?>
                 <div id="questions_div">
                     <div class="form_card p-5">
                         <div class="form-outline mb-4">
+
+                            <!-- Displays the Question Statement -->
                             <h4><b><?php echo $res['question'] ?></b></h4>
                         </div>
+
+                        <!-- Hidden field for question id -->
                         <input name="q_id<?php echo $c ?>" value="<?php echo $res['id'] ?>" hidden />
+
+                        <!-- 
+                            Below are all the input fields for Questions
+                            Each input field is given a name concatenated with a variable $c
+                            The $c variable is used to differentiate between input fields of different questions
+                        -->
+
                         <div class="row">
                             <div class="col">
                                 <div class="form-outline mb-4 ml-5">
@@ -73,6 +100,8 @@
                     </div>
                 </div>
             <?php } ?>
+            <!-- The loop ends here -->
+        
         </form>
     </div>
 
