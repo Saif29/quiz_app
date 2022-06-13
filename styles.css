@@ -1,0 +1,22 @@
+body {
+    background-color: #f7f7f7;
+}
+
+.header_title {
+    font-family: Recoleta;
+    font-weight: bolder;
+}
+
+.green-bg {
+    background-color: #0b4b36;
+}
+
+.green-text {
+    color: #0b4b36;
+}
+
+.form_card {
+    background-color: white;
+    border-radius: 30px;
+    margin-bottom: 4%;
+}
