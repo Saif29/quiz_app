@@ -1,6 +1,6 @@
 <h2>QUIZ APP</h2>
 
-This application is developed using HTML, CSS, Bootstrap, PHP and MySQL. For live demo of the application please visit: https://saif.pw/quiz_app/signin.php
+This application is developed using HTML, CSS, Bootstrap, PHP and MySQL. For live demo of the application please visit: https://saif.pw/quiz_app/
 
 
 <h4>Teachers Portal:</h4>
