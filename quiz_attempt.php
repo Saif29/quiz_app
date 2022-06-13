@@ -21,7 +21,6 @@
         $result = mysqli_query($connection,$sql);
         $num = mysqli_num_rows($result);
     ?>
-    <?php echo $_SESSION['email']; ?>
     <div class="container mt-5">
         <form id="quiz_form" method="POST" action="quiz_submit.php?num=<?php echo $num ?>">
             <div class="row mb-4">

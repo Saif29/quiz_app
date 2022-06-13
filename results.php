@@ -14,7 +14,6 @@
             echo "<script> window.location.assign('student_signin.php'); </script>";
         }
     ?>
-    <?php echo $_SESSION['email']; ?>
     <div class="container mt-5">
         <div class="row mb-5">
             <div class="col-4">
